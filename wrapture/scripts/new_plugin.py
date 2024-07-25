@@ -1,52 +1,11 @@
 """
-    _summary_
-
-_extended_summary_
+utility to make a new plugin with setup.py entry points
 """
+
 import os
-import shutil
-import abc
 from datetime import date
-from typing import Any
-# from icecream import ic
 
-class ConnectionBase(metaclass=abc.ABCMeta):
-    def __init__(self, credentials) -> None:
-        self.credentials = credentials
-
-    def connect(self):
-        """
-        return a callable that can interact with the API service
-        """
-
-class WrapperBase(metaclass=abc.ABCMeta):
-    """
-    WrapperBase is the base class for the wrapture plugin implementations.
-    """
-
-    def __init__(self, connection: ConnectionBase, resource: str, method: str):
-        self.connection = connection
-        self.verb = resource
-        self.method = method
-
-    def run(self, args, kwargs) -> Any:
-        """
-        call and cast the data
-        """
-        return self.cast(self.call(*args, **kwargs))
-
-    def call(self, *args, **kwargs)->Any:
-        """
-        call the API service
-        """
-
-    def cast(self, data: Any):
-        """
-        Change the data to the required format for the application
-        """
-
-
-
+# TODO MOVE MAIN() IN OWN FILE: HOST.PY
 SETUP_PY = \
 """
 # Copyright (C) {year} {author_name}.

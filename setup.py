@@ -35,11 +35,25 @@ setup(
     package_dir={'wrapture': 'wrapture'},
     include_package_data=True,
     entry_points={
-        "console_scripts": ["new_plugin = wrapture.wrapture:main"]
+        "console_scripts": [
+            "new_plugin = wrapture.wrapture.scripts.new_plugin:main",
+            "new_lib = wrapture.wrapture.scripts.new_lib:main"
+            ]
     },
     install_requires=[
-        "click"
+        "click",
+        "pluggy",
+        "requests",
+        "setuptools",
     ],
+    extras_require={
+        "dev": [
+            "pytest",
+            "pytest-pep8",
+            "pytest-cov",
+            "pytest-mock",
+        ]
+    },
     license='MIT',
     zip_safe=False,
     keywords='wrapture',
